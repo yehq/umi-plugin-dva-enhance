@@ -194,7 +194,7 @@ app.use(require('${winPath(require.resolve('dva-immer'))}')());
         target.imports.push(
           `import ${namespace} from '${path.substring(0, path.lastIndexOf(extname(path)))}';`,
         );
-        target.actions.push(isDev ? `\t${namespace}: new ${namespace}(),` : `\t\t${namespace}: {}`);
+        target.actions.push(isDev ? `\t${namespace}: new ${namespace}(),` : `\t\t${namespace}: {},`);
         return target;
       },
       { imports: [], actions: [] },
