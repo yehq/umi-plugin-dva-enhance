@@ -2,7 +2,7 @@ import { modelsContainer } from 'dva-model-enhance';
 <%= ImportActions %>
 
 const actions = {
-<%= RegisterActions %>
+<%= RegisterGlobalActions %>
 };
 
 modelsContainer.put(actions);

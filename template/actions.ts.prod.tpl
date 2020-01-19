@@ -1,3 +1,12 @@
+import { modelsContainer } from 'dva-model-enhance';
+<%= ImportActions %>
+
+const globalActions = {
+<%= RegisterGlobalActions %>
+};
+
+modelsContainer.put(globalActions);
+
 const actions = new Proxy(
     {
 <%= RegisterActions %>
