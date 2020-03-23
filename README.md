@@ -1,5 +1,7 @@
 # umi-plugin-dva-enhance
 
+> 当前 2.0 版本 需要 umi 3.0 以上
+
 添加插件后，在运行后的 ./src/.umi 文件夹中会多生成 actions.ts 和 StoreState.ts 文件，它们会随着 全局 和 pages 下的 models 文件里面的 model 文件改变而改变。
 
 -   actions.ts 自动加载所有的 class model 并实例化添加到 modelsContainer 中
