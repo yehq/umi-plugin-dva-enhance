@@ -133,6 +133,9 @@ export default function(api: IApi) {
                 storeStateContent: ({ namespace, path }) => {
                     const stateName = getStateName(namespace, path);
                     return `\t${namespace}: ${stateName},`;
+                },
+                runntimeRegisterClassModels: ({ namespace, noExtnamePath }) => {
+                    return `\t\t\tdvaApp.model({ namespace: "${namespace}", ...getModel(require("${noExtnamePath}").default) });`;
                 }
             });
 
@@ -163,6 +166,47 @@ export default function(api: IApi) {
                     StateContent: tmpProps.storeStateContent.join("\n")
                 })
             });
+
+            // exports.ts
+            const exportsTpl = readFileSync(
+                join(__dirname, "../templates/exports.ts.tpl"),
+                "utf-8"
+            );
+            api.writeTmpFile({
+                path: "plugin-dva-enhance/exports.ts",
+                content: Mustache.render(exportsTpl, {})
+            });
+
+            // exports.ts
+            const runtimeTpl = readFileSync(
+                join(__dirname, "../templates/runtime.tsx.tpl"),
+                "utf-8"
+            );
+            api.writeTmpFile({
+                path: "plugin-dva-enhance/runtime.tsx",
+                content: Mustache.render(runtimeTpl, {
+                    RegisterClassModels: tmpProps.runntimeRegisterClassModels.join(
+                        "\n"
+                    )
+                })
+            });
         }
     });
+
+    // Runtime Plugin
+    api.addRuntimePlugin({
+        fn: () => [
+            join(api.paths.absTmpPath!, "plugin-dva-enhance/runtime.tsx")
+        ],
+        stage: -1
+    });
+    api.addRuntimePluginKey(() => ["dva-enhance"]);
+
+    // 导出内容
+    api.addUmiExports(() => [
+        {
+            exportAll: true,
+            source: "../plugin-dva-enhance/exports"
+        }
+    ]);
 }

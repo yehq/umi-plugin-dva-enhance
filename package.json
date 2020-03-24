@@ -1,6 +1,6 @@
 {
     "name": "umi-plugin-dva-enhance",
-    "version": "2.0.1",
+    "version": "2.0.0",
     "description": "",
     "authors": {
         "name": "yehq",
@@ -8,7 +8,7 @@
     },
     "repository": "/umi-plugin-dva-enhance",
     "peerDependencies": {
-        "dva-model-enhance": "^1.2.11",
+        "dva-model-enhance": "^1.2.12",
         "umi": "3.x"
     },
     "main": "lib/index.js",
@@ -21,9 +21,10 @@
     },
     "devDependencies": {
         "@types/jest": "^25.1.4",
+        "@umijs/plugin-dva": "^0.6.4",
         "@umijs/test": "^3.0.12",
         "cross-env": "^6.0.3",
-        "dva-model-enhance": "^1.2.11",
+        "dva-model-enhance": "^1.2.12",
         "father-build": "^1.8.0",
         "np": "^5.0.3",
         "umi": "^3.0.0"

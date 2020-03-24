@@ -25,12 +25,13 @@ export default function getClassModels(opts: {
         .reduce<ClassModels>((target, path) => {
             if (/\.d.ts$/.test(path)) return target;
             if (/\.(test|e2e|spec).(j|t)sx?$/.test(path)) return target;
-            const namespace = !opts.skipClassModelValidate
-                ? getNamespace({
-                      content: readFileSync(path, { encoding: "utf-8" })
-                  }) || basename(path, extname(path))
-                : basename(path, extname(path));
 
+            const namespace = opts.skipClassModelValidate
+                ? basename(path, extname(path))
+                : getNamespace({
+                      content: readFileSync(path, { encoding: "utf-8" })
+                  });
+            if (!namespace) return target;
             target[namespace] = path;
             return target;
         }, {});
