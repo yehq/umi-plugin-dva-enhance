@@ -1,6 +1,8 @@
 node_modules
 yarn.lock
+package-lock.json
 .vscode
 example
 .history
 .umi
+/src/fixtures/normal/.umi-test

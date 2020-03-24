@@ -141,7 +141,7 @@ export default function(api: IApi) {
 
             // action.ts
             const actionTpl = readFileSync(
-                join(__dirname, "../templates/actions.ts.tpl"),
+                join(__dirname, "./templates/actions.ts.tpl"),
                 "utf-8"
             );
             api.writeTmpFile({
@@ -156,7 +156,7 @@ export default function(api: IApi) {
 
             // StoreState.ts
             const storeStateTpl = readFileSync(
-                join(__dirname, "../templates/StoreState.ts.tpl"),
+                join(__dirname, "./templates/StoreState.ts.tpl"),
                 "utf-8"
             );
             api.writeTmpFile({
@@ -169,7 +169,7 @@ export default function(api: IApi) {
 
             // exports.ts
             const exportsTpl = readFileSync(
-                join(__dirname, "../templates/exports.ts.tpl"),
+                join(__dirname, "./templates/exports.ts.tpl"),
                 "utf-8"
             );
             api.writeTmpFile({
@@ -179,7 +179,7 @@ export default function(api: IApi) {
 
             // exports.ts
             const runtimeTpl = readFileSync(
-                join(__dirname, "../templates/runtime.tsx.tpl"),
+                join(__dirname, "./templates/runtime.tsx.tpl"),
                 "utf-8"
             );
             api.writeTmpFile({
