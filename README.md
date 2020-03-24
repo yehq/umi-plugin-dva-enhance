@@ -39,6 +39,7 @@ export default {
         // 是否跳过 class model 验证, 跳过后生成的文件 namespace 默认取 文件名称, 默认值 false;
         // skipClassModelValidate?: boolean;
     },
+    // 如果提示 plugin umi-plugin-dva-enhance is already registered, 就不用显示添加插件
     plugins: ["umi-plugin-dva-enhance"]
 };
 ```
