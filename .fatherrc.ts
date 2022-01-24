@@ -1,6 +1,5 @@
-
-export default [
-  {
-    cjs: 'babel',
-  },
-];
+export default {
+  target: 'node',
+  cjs: { type: 'babel', lazy: true },
+  disableTypeCheck: true,
+};

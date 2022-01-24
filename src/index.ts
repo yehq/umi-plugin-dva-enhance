@@ -135,7 +135,7 @@ export default function(api: IApi) {
                     return `\t${namespace}: ${stateName},`;
                 },
                 runntimeRegisterClassModels: ({ namespace, noExtnamePath }) => {
-                    return `\t\t\tdvaApp.model({ namespace: "${namespace}", ...getModel(require("${noExtnamePath}").default) });`;
+                    return `\t\t\tdvaApp.model({ namespace: "${namespace}", ...getModel(${fistCharUpper(namespace)}) });`;
                 }
             });
 
@@ -185,6 +185,7 @@ export default function(api: IApi) {
             api.writeTmpFile({
                 path: "plugin-dva-enhance/runtime.tsx",
                 content: Mustache.render(runtimeTpl, {
+                    ImportActions: tmpProps.actionsImportActions.join("\n"),
                     RegisterClassModels: tmpProps.runntimeRegisterClassModels.join(
                         "\n"
                     )
