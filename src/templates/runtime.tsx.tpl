@@ -1,6 +1,7 @@
 import React from 'react';
 import { getModel } from 'dva-model-enhance';
 import { getDvaApp } from '../core/umiExports';
+{{{ImportActions}}}
 
 class Container extends React.Component {
     constructor(props: any) {
